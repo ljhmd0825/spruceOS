@@ -450,7 +450,7 @@ move_dotconfig_into_place() {
 }
 
 run_ppsspp() {
-	export HOME=/mnt/SDCARD
+	export XDG_CONFIG_HOME="/mnt/SDCARD/Saves"
 	cd $EMU_DIR
 
 	PPSSPP_CMDLINE="--fullscreen"
@@ -468,13 +468,13 @@ run_ppsspp() {
 }
 
 load_ppsspp_configs() {
-	PSP_DIR="/mnt/SDCARD/.config/ppsspp/PSP/SYSTEM"
+	PSP_DIR="/mnt/SDCARD/Saves/ppsspp/PSP/SYSTEM"
 	cp -f "$PSP_DIR/controls-$PLATFORM.ini" "$PSP_DIR/controls.ini"
 	cp -f "$PSP_DIR/ppsspp-$PLATFORM.ini" "$PSP_DIR/ppsspp.ini"
 }
 
 save_ppsspp_configs() {
-	PSP_DIR="/mnt/SDCARD/.config/ppsspp/PSP/SYSTEM"
+	PSP_DIR="/mnt/SDCARD/Saves/ppsspp/PSP/SYSTEM"
 	cp -f "$PSP_DIR/controls.ini" "$PSP_DIR/controls-$PLATFORM.ini"
 	cp -f "$PSP_DIR/ppsspp.ini" "$PSP_DIR/ppsspp-$PLATFORM.ini"
 }
@@ -657,7 +657,6 @@ case $EMU_NAME in
 		run_port
 		;;
 	"PSP")
-		[ ! -d "/mnt/SDCARD/.config" ] && move_dotconfig_into_place
 		load_ppsspp_configs
 		run_ppsspp
 		save_ppsspp_configs

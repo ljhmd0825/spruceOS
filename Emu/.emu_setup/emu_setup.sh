@@ -15,17 +15,6 @@ else
 	log_message "emu_setup.sh: $OPT_DIR already exists"
 fi
 
-# move .config folder into place at SD root
-if [ ! -d "/mnt/SDCARD/.config" ]; then
-	if [ -d "$SETUP_DIR/.config" ]; then
-		cp -rf "$SETUP_DIR/.config" "/mnt/SDCARD/.config" && log_message "emu_setup.sh: copied .config folder to root of SD card."
-	else
-		log_message "emu_setup.sh: WARNING!!! No .config folder found!"
-	fi
-else
-	log_message "emu_setup.sh: .config folder already in place at SD card root."
-fi
-
 # create splore launcher if it doesn't already exist
 if [ ! -f "$SPLORE_CART" ]; then
 	touch "$SPLORE_CART" && log_message "emu_setup.sh: created $SPLORE_CART"
