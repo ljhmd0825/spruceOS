@@ -459,7 +459,15 @@ runtime_mounts_SmartPro() {
 }
 
 runtime_mounts_SmartProS() {
-   runtime_mounts_Brick
+    mkdir -p "/mnt/SDCARD/Roms/PORTS64"
+    mount --bind "/mnt/SDCARD/Roms/PORTS64" "/mnt/SDCARD/Roms/PORTS" &    
+    mount -o bind "${SPRUCE_ETC_DIR}/profile" /etc/profile &
+    mount -o bind "${SPRUCE_ETC_DIR}/group" /etc/group &
+    mount -o bind "${SPRUCE_ETC_DIR}/passwd" /etc/passwd &
+    /mnt/SDCARD/spruce/brick/sdl2/bind.sh &
+    wait
+    touch /mnt/SDCARD/spruce/flip/bin/MainUI
+    mount --bind /usr/bin/python3 /mnt/SDCARD/spruce/flip/bin/MainUI
 }
 
 runtime_mounts_Flip() {
