@@ -1,0 +1,6 @@
+{
+  "label": "GPT-2 Chat",
+  "icon": "/mnt/SDCARD/Themes/SPRUCE/icons/App/memeai.png",
+  "launch": "launch.sh",
+  "description": "Chat with GPT-2 on your handheld"
+}
